@@ -52,13 +52,13 @@ return  array(
     'DEFAULT_FILTER'        =>  'htmlspecialchars', // 默认参数过滤方法 用于I函数...
 
     /* 数据库设置 */
-    'DB_TYPE'               =>  '',     // 数据库类型
-    'DB_HOST'               =>  '', // 服务器地址
-    'DB_NAME'               =>  '',          // 数据库名
-    'DB_USER'               =>  '',      // 用户名
+    'DB_TYPE'               =>  'mysql',     // 数据库类型
+    'DB_HOST'               =>  '127.0.0.1', // 服务器地址
+    'DB_NAME'               =>  'teach_central',          // 数据库名
+    'DB_USER'               =>  'root',      // 用户名
     'DB_PWD'                =>  '',          // 密码
-    'DB_PORT'               =>  '',        // 端口
-    'DB_PREFIX'             =>  '',    // 数据库表前缀
+    'DB_PORT'               =>  '3306',        // 端口
+    'DB_PREFIX'             =>  'tc_',    // 数据库表前缀
     'DB_FIELDTYPE_CHECK'    =>  false,       // 是否进行字段类型检查
     'DB_FIELDS_CACHE'       =>  true,        // 启用字段缓存
     'DB_CHARSET'            =>  'utf8',      // 数据库编码默认采用utf8
@@ -106,9 +106,10 @@ return  array(
     'TMPL_CONTENT_TYPE'     =>  'text/html', // 默认模板输出类型
     'TMPL_ACTION_ERROR'     =>  THINK_PATH.'Tpl/dispatch_jump.tpl', // 默认错误跳转对应的模板文件
     'TMPL_ACTION_SUCCESS'   =>  THINK_PATH.'Tpl/dispatch_jump.tpl', // 默认成功跳转对应的模板文件
-    'TMPL_EXCEPTION_FILE'   =>  THINK_PATH.'Tpl/think_exception.tpl',// 异常页面的模板文件
+    //'TMPL_EXCEPTION_FILE'   =>  THINK_PATH.'Tpl/think_exception.tpl',// 异常页面的模板文件
+    'TMPL_EXCEPTION_FILE'   =>  APP_PATH.'Home/View/Public/exception.tpl',// 异常页面的模板文件
     'TMPL_DETECT_THEME'     =>  false,       // 自动侦测模板主题
-    'TMPL_TEMPLATE_SUFFIX'  =>  '.html',     // 默认模板文件后缀
+    'TMPL_TEMPLATE_SUFFIX'  =>  '.tpl',     // 默认模板文件后缀
     'TMPL_FILE_DEPR'        =>  '/', //模板文件CONTROLLER_NAME与ACTION_NAME之间的分割符
     // 布局设置
     'TMPL_ENGINE_TYPE'      =>  'Think',     // 默认模板引擎 以下设置仅对使用Think模板引擎有效
@@ -123,7 +124,7 @@ return  array(
     'TMPL_CACHE_PREFIX'     =>  '',         // 模板缓存前缀标识，可以动态改变
     'TMPL_CACHE_TIME'       =>  0,         // 模板缓存有效期 0 为永久，(以数字为值，单位:秒)
     'TMPL_LAYOUT_ITEM'      =>  '{__CONTENT__}', // 布局模板的内容替换标识
-    'LAYOUT_ON'             =>  false, // 是否启用布局
+    'LAYOUT_ON'             =>  true, // 是否启用布局
     'LAYOUT_NAME'           =>  'layout', // 当前布局名称 默认为layout
 
     // Think模板引擎标签库相关设定
@@ -135,7 +136,7 @@ return  array(
     
     /* URL设置 */
     'URL_CASE_INSENSITIVE'  =>  true,   // 默认false 表示URL区分大小写 true则表示不区分大小写
-    'URL_MODEL'             =>  1,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
+    'URL_MODEL'             =>  2,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
     // 0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式
     'URL_PATHINFO_DEPR'     =>  '/',	// PATHINFO模式下，各参数之间的分割符号
     'URL_PATHINFO_FETCH'    =>  'ORIG_PATH_INFO,REDIRECT_PATH_INFO,REDIRECT_URL', // 用于兼容判断PATH_INFO 参数的SERVER替代变量列表
