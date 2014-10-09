@@ -14,19 +14,31 @@ class IndexController extends Controller {
     }
 
     public function login() {
-        $data = I('post.');
+        $postdata = I('post.');
         $User = M('User');
 
-        $authInfo = $User->where("username='%s' and status=1", $data[username])->find();
+        $authInfo = $User->where("username='%s' and status=1", $postdata[username])->find();
         if(!isset($authInfo)) {
             $this->error('帐号不存在或已禁用！'); 
         }
         else {
-            if($authInfo[password] != pwdHash($data[password])) {
+            if($authInfo[password] != pwdHash($postdata[password])) {
                 $this->error('密码错误！');
             }
             saveSession($authInfo);
-            $this->success('登录成功！','Index/upload');
+            $ip     = get_client_ip();
+            $time   = time();
+            $data   = array();
+            
+            $data['id'] =   $authInfo['id'];
+            $data['last_login_time']    =   $time;
+            $data['last_login_ip']  =   $ip;
+            $User->save($data);
+            $User->where('id=%s',$authInfo['id'])->setInc('login_count');
+            if(!isUser())
+                $this->success('登录成功！','Admin/Index/index');
+            else
+                $this->success('登录成功！','Index/upload'); 
         }
     }
 

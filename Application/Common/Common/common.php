@@ -8,13 +8,17 @@ function isLogged() {
     return isset($_SESSION['authId']);
 }
 
+function isUser() {
+    return $_SESSION['type']=='users'?1:0;
+}
+
 function saveSession($authInfo) {
     $info = $authInfo;
     $_SESSION['authId']   = $info['id'];
     $_SESSION['account']  = $info['username'];
-    if (0 == $info['group_id'])
+    if (3 == $info['group_id'])
         $_SESSION['type'] = 'users';
-    else if (1 == $info['group_id'])
+    else if (2 == $info['group_id'])
         $_SESSION['type'] = 'super';
     else
         $_SESSION['type'] = 'admin';
@@ -31,4 +35,5 @@ function isActive($curURL, $keyword) {
     else
         return '';
 }
+
 ?>

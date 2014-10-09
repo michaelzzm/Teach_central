@@ -8,7 +8,7 @@
     }else {
       $.ajax({
         type: 'POST',
-        url: "{:U('User/changepwd')}",
+        url: "{:U('Home/User/changepwd')}",
         data: {password:$('#curpas').val(),newpassword:$('#newpas').val()},
         dataType: 'json',
         success: function(data) {
@@ -66,7 +66,7 @@
   </div>
 </div>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -75,7 +75,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <p class="navbar-text" style="color:#fff"><strong>教学部互动平台</strong></p>
+      <p class="navbar-text" style="color:#333"><strong>教学部互动平台 - 管理员平台</strong></p>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -87,7 +87,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a data-toggle="modal" data-target="#modelChangePWD" href="#">修改密码</a></li>
             <li class="divider"></li>
-            <li><a href="{:U('Index/logout')}">登出</a></li>
+            <li><a href="{:U('Home/Index/logout')}">登出</a></li>
           </ul>
         </li>
       <?php
@@ -112,9 +112,8 @@
         } else {
         ?>
             <ul class="nav nav-sidebar">
-                <li <?php echo isActive($_SERVER[PHP_SELF], 'upload'); ?> ><a href="{:U('Index/upload')}"><i class="glyphicon glyphicon-upload"></i>&nbsp;&nbsp;上传教学计划</a></li>
+                <li <?php echo isActive($_SERVER[PHP_SELF], 'user'); ?> ><a href="{:U('Index/user')}"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;学员管理</a></li>
                 <li <?php echo isActive($_SERVER[PHP_SELF], 'listfile'); ?> ><a href="{:U('Index/listfile')}"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;所有教学计划</a></li>
-                <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;我的课表</a></li>
             </ul>
         <?php } ?>
         </div><!--sidebar-->
@@ -146,13 +145,12 @@
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input type="password" id="pwd" value="123456" class="form-control" placeholder="密码">
+                    <input type="text" id="pwd" value="123456" class="form-control" placeholder="密码">
                 </div>
                 <!--<div class="checkbox">
                 <label>
                 <input id="inputRememberme" name="inputRememberme" type="checkbox" value="1"> 记住登录 </label>
                 </div>-->
-                <br/>若忘记密码，请联系管理员。
             </div>
             </div>
         </div>
